@@ -12,23 +12,34 @@ app.use(express.json());
 app.use( express.static(path.join(__dirname, '../public/dist')));
 app.use(routes);
 
-app.get('/shows/:name', (req, res) => {
-  console.log(req.params.name);
-  // axios.get('http.api')
-  //   .then(result => res.send(result.data))
-  //   .catch(err => res.status(404));
-})
+// app.get('/shows/:name', (req, res) => {
+//   let url = ` https://api.tvmaze.com/search/shows?q=${req.params.name}`;
+//   fetch(url)
+//   .then(results => results.json())
+//   .then(results =>  res.send(results))
+//   .catch(error => {
+//     console.log('ERROR in shows API call', error);
+//     res.status(400).json({error: error});
+//   });
+// })
 
-app.get('/movies', (req, res) => {
+// app.get('/movies', (req, res) => {
+//   let url = `https://api.watchmode.com/v1/search/?apiKey=${key}&search_field=name&search_value=${req.query.name}`;
+//   axios(url)
+//   .then(results => res.send(results.data))
+//   .catch(error => {
+//     console.log('ERROR in Movies API call', error);
+//     res.status(400).json({error: error});
+//   });
+// })
 
-})
+// app.post('/shows', (req, res) => {
 
-app.post('/shows', (req, res) => {
 
-})
+// })
 
-app.post('/movies', (req, res) => {
+// app.post('/movies', (req, res) => {
 
-})
+// })
 
 app.listen(8080, console.log('Server listening on 8080'));

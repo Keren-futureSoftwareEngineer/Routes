@@ -35,7 +35,6 @@ const MovieSchema = new Schema({
 let Show = mongoose.model('Show', ShowSchema);
 let Movie = mongoose.model('Movie', MovieSchema);
 
-
 const addShow = async(data) => {
   try{
     const {name, year} = data;

@@ -4,30 +4,31 @@ import ResultsList from './ResultsList.jsx';
 import Search from './Search.jsx';
 
 const App = () => {
-  const data = [
-    {name: 'Jaws', year: 1985},
-    {name: 'Twilight', year: 2008},
-    {name: 'Titanic', year: 1998},
-    {name: 'Lord of the Rings', year: 2001}
-  ];
-  const [shows, setShows] = useState(data);
-  const [type, setType] = useState([]);
+  const [shows, setShows] = useState([]);
+  const [type, setType] = useState();
 
   // useEffect(() => {
   //   if (shows.length) console.log(shows)
   // }, [shows]);
 
   const getShows = (name) => {
-    // @PATH (`/shows/${name})
     axios.get(`/shows/${name}`)
-      .then((result) => {setShows(result.data)})
-      .catch((err) => {console.log(err)});
+    .then(results => {
+      setShows(results.data)
+      setType('shows')
+    })
+    .catch(error => console.log('Get shows by name ERROR:', error))
+
   }
 
   const getMovies = (name) => {
-
+    axios.get('/movies', {params: {name}})
+    .then(results => {
+      setShows(results.data)
+      setType('movies')
+    })
+    .catch(error => console.log('Get shows by genre ERROR:', error))
   }
-
 
   return (
     <div id="page">
@@ -38,7 +39,7 @@ const App = () => {
           searchMovies={getMovies}
         />
       </div>
-      <ResultsList shows={shows} type='movies'/>
+      <ResultsList shows={shows} type={type}/>
     </div>
   )
 }
