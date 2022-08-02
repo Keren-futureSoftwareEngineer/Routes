@@ -13,7 +13,10 @@ app.use( express.static(path.join(__dirname, '../public/dist')));
 app.use(routes);
 
 app.get('/shows/:name', (req, res) => {
-
+  console.log(req.params.name);
+  // axios.get('http.api')
+  //   .then(result => res.send(result.data))
+  //   .catch(err => res.status(404));
 })
 
 app.get('/movies', (req, res) => {

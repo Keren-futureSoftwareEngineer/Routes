@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 import ResultsList from './ResultsList.jsx';
 import Search from './Search.jsx';
 
@@ -19,7 +19,9 @@ const App = () => {
 
   const getShows = (name) => {
     // @PATH (`/shows/${name})
-
+    axios.get(`/shows/${name}`)
+      .then((result) => {setShows(result.data)})
+      .catch((err) => {console.log(err)});
   }
 
   const getMovies = (name) => {
